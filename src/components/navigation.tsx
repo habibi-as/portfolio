@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { Menu, X, Sun, Moon } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
+import Logo from './asurax.jpg'  // <-- Updated import for your logo
 
 const navItems = [
   { name: 'Home', href: '#home' },
@@ -22,23 +23,17 @@ export default function Navigation() {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+  useEffect(() => setMounted(true), [])
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
+    const handleScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth' })
     setIsOpen(false)
   }
 
@@ -55,11 +50,7 @@ export default function Navigation() {
           {/* Logo */}
           <motion.div whileHover={{ scale: 1.05 }} className="flex-shrink-0">
             <Link href="/">
-              <img
-                src="/images/asurax.jpg"
-                alt="ASURAX Logo"
-                className="h-12 w-auto"
-              />
+              <img src={Logo} alt="ASURAX Logo" className="h-12 w-auto" />
             </Link>
           </motion.div>
 
@@ -138,9 +129,3 @@ export default function Navigation() {
     </motion.nav>
   )
 }
-
-
-
-
-
-
