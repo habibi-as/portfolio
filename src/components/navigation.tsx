@@ -5,7 +5,6 @@ import { motion } from 'framer-motion'
 import { Menu, X, Sun, Moon } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
-import Logo from './asurax.jpg'  // <-- Updated import for your logo
 
 const navItems = [
   { name: 'Home', href: '#home' },
@@ -50,7 +49,11 @@ export default function Navigation() {
           {/* Logo */}
           <motion.div whileHover={{ scale: 1.05 }} className="flex-shrink-0">
             <Link href="/">
-              <img src={Logo} alt="ASURAX Logo" className="h-12 w-auto" />
+              <img
+                src="/images/asurax.jpg"
+                alt="ASURAX Logo"
+                className="h-12 w-auto"
+              />
             </Link>
           </motion.div>
 
@@ -71,7 +74,7 @@ export default function Navigation() {
             </div>
           </div>
 
-          {/* Theme Toggle & Mobile Menu Button */}
+          {/* Theme Toggle & Mobile Menu */}
           <div className="flex items-center space-x-4">
             <motion.button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -88,7 +91,6 @@ export default function Navigation() {
               )}
             </motion.button>
 
-            {/* Mobile menu button */}
             <div className="md:hidden">
               <motion.button
                 onClick={() => setIsOpen(!isOpen)}
@@ -129,3 +131,4 @@ export default function Navigation() {
     </motion.nav>
   )
 }
+
