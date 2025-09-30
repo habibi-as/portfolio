@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X, Sun, Moon } from 'lucide-react'
 import { useTheme } from 'next-themes'
+import Link from 'next/link'
 
 const navItems = [
   { name: 'Home', href: '#home' },
@@ -52,13 +53,14 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="flex-shrink-0"
-          >
-            <span className="text-2xl font-bold gradient-text">
-              ASURAX
-            </span>
+          <motion.div whileHover={{ scale: 1.05 }} className="flex-shrink-0">
+            <Link href="/">
+              <img
+                src="/images/asurax.jpg"
+                alt="ASURAX Logo"
+                className="h-12 w-auto"
+              />
+            </Link>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -136,6 +138,7 @@ export default function Navigation() {
     </motion.nav>
   )
 }
+
 
 
 
